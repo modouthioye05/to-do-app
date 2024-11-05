@@ -1,2 +1,1 @@
-# to-do-app
-to do app made at skidmore codes 
+my to do app creat at skidmore code 
