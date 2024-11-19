@@ -18,3 +18,22 @@ def get_tasks():
 			}
 			response.append(todo_json)
 		return response
+	
+@app.get('create_tasks')
+def create_tasks (todo:str):
+	with sqlite3.connect('./todos.db')  as conn:
+		try:
+			query =conn.execute("INSERT INTO todos (todo) Values (?)",(todo,))
+			return True 
+		except: 
+			return "Error"
+
+
+@app.get('/delete_tasks')
+def delete_task(id: int):
+	with sqlite3.connect('./todos.db') as conn:
+		try:
+			query=conn.execute('DELETE FROM todos WHERE id=?', (id,))
+			return True
+		except:
+			return "Error"
